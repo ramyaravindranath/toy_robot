@@ -1,15 +1,17 @@
 class Table
-  attr_accessor:length
-  attr_accessor:breadth
+  attr_accessor:width
+  attr_accessor:height
 
 
   def initialize(robot)
     @robot=robot
-    self.length=5
-    self.breadth=5
+    self.width=5
+    self.height=5
   end
 
-  def place?
-    return true if (@robot.x==0 && @robot.y==0)
+  def placed?(position)
+    (position.valid_position_of_x? && position.valid_position_of_y?)
   end
 end
+
+
