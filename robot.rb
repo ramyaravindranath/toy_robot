@@ -10,4 +10,9 @@ class Robot
   def placed?
     table.valid_position?(position)
   end
+
+  def move
+    new_position=position.get_new_position if placed?
+    @position=new_position
+  end
 end
