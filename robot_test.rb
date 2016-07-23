@@ -52,4 +52,16 @@ class RobotTest < Minitest::Test
     robot.turn_right
     assert_equal robot.position.facing, 'EAST'
   end
+
+  def test_report
+    table = Table.new
+    position = Position.new(0, 0, 'EAST')
+    robot = Robot.new(position, table)
+    robot.move
+    robot.turn_left
+    new_position=robot.report
+    assert_equal robot.position.x,new_position.x
+    assert_equal robot.position.y,new_position.y
+    assert_equal robot.position.facing,'NORTH'
+  end
 end

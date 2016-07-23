@@ -23,4 +23,8 @@ class Robot
   def turn_right
     @position = position.turn_right if placed?
   end
+
+  def report
+    position
+  end
 end
