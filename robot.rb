@@ -1,5 +1,6 @@
 class Robot
- def initialize(position)
-    @position=position
-  end
+  attr_accessor:position
+  def initialize(position)
+    @position = position
+   end
 end
