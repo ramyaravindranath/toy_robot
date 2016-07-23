@@ -8,16 +8,7 @@ class Table
     @height = 5
   end
 
-  def placed?(robot)
-    unless valid_position?(robot.position)
-      return false
-    else
-      @robot = robot
-      return true
-    end
-  end
-
   def valid_position?(position)
-    position.x.between?(0, width-1) && position.y.between?(0, height-1)
+    position.x.between?(0, width - 1) && position.y.between?(0, height - 1)
   end
 end

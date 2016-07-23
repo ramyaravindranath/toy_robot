@@ -5,25 +5,15 @@ require './table'
 require './position'
 
 class TableTest < Minitest::Test
-  def test_place_robot_on_table
+  def test_check_valid_position
     table = Table.new
-    position = Position.new(3, 4)
-    robot = Robot.new(position)
-    assert_equal table.placed?(robot), true
+    position = Position.new(1, 3)
+    assert_equal table.valid_position?(position), true
   end
 
-  def test_place_robot_out_of_table
+  def test_check_invalid_position
     table = Table.new
     position = Position.new(5, 4)
-    robot = Robot.new(position)
-    assert_equal table.placed?(robot), false
-end
-
-  def test_to_check_robot
-    table = Table.new
-    position = Position.new(3, 4)
-    robot = Robot.new(position)
-    table.placed?(robot)
-    assert_equal table.robot, robot
+    assert_equal table.valid_position?(position), false
   end
 end
