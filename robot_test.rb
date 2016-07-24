@@ -24,8 +24,15 @@ class RobotTest < Minitest::Test
     position = Position.new(0, 0, 'EAST')
     robot = Robot.new(position, table)
     robot.move
-    new_position = Position.new(1, 0, 'EAST')
-    assert_equal robot.position.x, new_position.x
+    assert_equal robot.position.x, 1
+  end
+
+  def test_not_move_east
+    table = Table.new
+    position = Position.new(4, 0, 'EAST')
+    robot = Robot.new(position, table)
+    robot.move
+    assert_equal robot.position.x, 4
   end
 
   def test_move_north
@@ -33,8 +40,7 @@ class RobotTest < Minitest::Test
     position = Position.new(0, 3, 'NORTH')
     robot = Robot.new(position, table)
     robot.move
-    new_position = Position.new(0, 4, 'EAST')
-    assert_equal robot.position.x, new_position.x
+    assert_equal robot.position.y, 4
   end
 
   def test_turn_left
@@ -45,23 +51,33 @@ class RobotTest < Minitest::Test
     assert_equal robot.position.facing, 'WEST'
   end
 
-    def test_turn_right
+  def test_turn_right
     table = Table.new
     position = Position.new(0, 3, 'NORTH')
     robot = Robot.new(position, table)
     robot.turn_right
     assert_equal robot.position.facing, 'EAST'
-  end
+end
 
-  def test_report
+  def test_report_when_moved
     table = Table.new
-    position = Position.new(0, 0, 'EAST')
+    position = Position.new(3, 0, 'EAST')
     robot = Robot.new(position, table)
     robot.move
     robot.turn_left
-    new_position=robot.report
-    assert_equal robot.position.x,new_position.x
-    assert_equal robot.position.y,new_position.y
-    assert_equal robot.position.facing,'NORTH'
+    new_position = robot.report
+    assert_equal robot.position.x, new_position.x
+    assert_equal robot.position.y, new_position.y
+    assert_equal robot.position.facing, 'NORTH'
+  end
+
+  def test_report_when_not_moved
+    table = Table.new
+    position = Position.new(4, 0, 'EAST')
+    robot = Robot.new(position, table)
+    robot.move
+    assert_equal robot.position.x, position.x
+    assert_equal robot.position.y, position.y
+    assert_equal robot.position.facing, position.facing
   end
 end
