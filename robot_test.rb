@@ -19,7 +19,7 @@ class RobotTest < Minitest::Test
     assert_equal robot.placed?, false
   end
 
-  def test_move_east
+  def test_move
     table = Table.new
     position = Position.new(0, 0, 'EAST')
     robot = Robot.new(position, table)
@@ -27,20 +27,12 @@ class RobotTest < Minitest::Test
     assert_equal robot.position.x, 1
   end
 
-  def test_not_move_east
+  def test_not_move
     table = Table.new
     position = Position.new(4, 0, 'EAST')
     robot = Robot.new(position, table)
     robot.move
     assert_equal robot.position.x, 4
-  end
-
-  def test_move_north
-    table = Table.new
-    position = Position.new(0, 3, 'NORTH')
-    robot = Robot.new(position, table)
-    robot.move
-    assert_equal robot.position.y, 4
   end
 
   def test_turn_left

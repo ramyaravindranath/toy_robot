@@ -12,7 +12,7 @@ class Robot
   end
 
   def move
-    @position=position.get_new_position(position) if placed?
+    @position = position.get_new_position(position) if placed?
   end
 
   def turn_left
