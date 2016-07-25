@@ -5,7 +5,7 @@ class Robot
   def initialize(position, table)
     @position = position
     @table = table
-   end
+  end
 
   def placed?
     table.valid_position?(position)

@@ -1,8 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './table'
-require './position'
-require './robot'
+require './lib/table'
+require './lib/position'
+require './lib/robot'
 
 class PositionTest < Minitest::Test
   def test_move_east

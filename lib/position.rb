@@ -44,7 +44,7 @@ class Position
       Position.new(@x, current_position.y + 1, facing)
     else
       current_position
-     end
+    end
   end
 
   def move_south(current_position)

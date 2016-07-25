@@ -1,8 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require './table'
-require './position'
-require './robot'
+require './lib/table'
+require './lib/position'
+require './lib/robot'
 
 class RobotTest < Minitest::Test
   def test_is_robot_placed
@@ -49,7 +49,7 @@ class RobotTest < Minitest::Test
     robot = Robot.new(position, table)
     robot.turn_right
     assert_equal robot.position.facing, 'EAST'
-end
+  end
 
   def test_report_when_moved
     table = Table.new
