@@ -1,3 +1,4 @@
+require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/table'
@@ -19,7 +20,7 @@ class RobotTest < Minitest::Test
     assert_equal robot.placed?, false
   end
 
-  def test_move
+  def test_move_toward_east
     table = Table.new
     position = Position.new(0, 0, 'EAST')
     robot = Robot.new(position, table)
@@ -27,7 +28,31 @@ class RobotTest < Minitest::Test
     assert_equal robot.position.x, 1
   end
 
-  def test_not_move
+  def test_move_toward_west
+    table = Table.new
+    position = Position.new(1, 0, 'WEST')
+    robot = Robot.new(position, table)
+    robot.move
+    assert_equal robot.position.x, 0
+  end
+
+  def test_move_toward_north
+    table = Table.new
+    position = Position.new(1, 0, 'NORTH')
+    robot = Robot.new(position, table)
+    robot.move
+    assert_equal robot.position.y, 1
+  end
+
+  def test_move_toward_south
+    table = Table.new
+    position = Position.new(1, 1, 'SOUTH')
+    robot = Robot.new(position, table)
+    robot.move
+    assert_equal robot.position.y, 0
+  end
+
+  def test_not_move_towards_east
     table = Table.new
     position = Position.new(4, 0, 'EAST')
     robot = Robot.new(position, table)

@@ -1,3 +1,4 @@
+# This is Robot class
 class Robot
   attr_accessor:position
   attr_accessor:table

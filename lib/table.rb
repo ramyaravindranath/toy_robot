@@ -1,3 +1,4 @@
+# This represents Table on which robot is placed
 class Table
   attr_accessor:width
   attr_accessor:height

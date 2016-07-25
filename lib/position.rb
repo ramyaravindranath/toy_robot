@@ -1,3 +1,4 @@
+# This class represents position of the robot
 class Position
   attr_accessor:x
   attr_accessor:y
