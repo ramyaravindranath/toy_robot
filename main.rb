@@ -1,3 +1,6 @@
+require_relative './lib/command.rb'
+
+command=Command.new
 puts "Do you want to run toy_robot?(Y/N)"
 answer = gets.chomp.upcase
 if answer!="Y"
@@ -5,6 +8,11 @@ if answer!="Y"
 else
   loop do
     puts "Enter the command"
-    command = gets.chomp.upcase
+    input = gets.chomp.upcase
+    if command.is_valid_input(input)
+      execute(input)
+    else
+      puts "Please enter a valid command"
+    end
   end
 end
