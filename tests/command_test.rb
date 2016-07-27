@@ -18,12 +18,9 @@ class CommandTest < Minitest::Test
 
   def test_place_robot
     table=Table.new
-    position=Position.new(3,4,'SOUTH')
-    robot=Robot.new(table,position)
     input="PLACE(3,4,'SOUTH)"
     command=Command.new(table)
-    command.place_robot(input)
-    assert robot
+    assert command.place_robot(input)
   end
 
 end

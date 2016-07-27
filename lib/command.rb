@@ -31,12 +31,12 @@ class Command
     end
   end
 
-  def  place_robot(input)
+  def place_robot(input)
    position_array= input.scan(/\(([^\)]+)\)/).first
    position_x=position_array[0]
    position_y=position_array[1]
    position_facing=position_array[2]
-   position_obj=Position.new(position_x,position_y,position_facing)
-   robot=Robot.new(position_obj,table)
+   position_obj=Position.new(position_x.to_i,position_y.to_i,position_facing)
+   table.valid_position?(position_obj)
   end
 end
