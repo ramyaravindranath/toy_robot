@@ -1,10 +1,8 @@
 require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/table'
 require './lib/position'
-require './lib/robot'
-
+# Test class for position functionalities
 class PositionTest < Minitest::Test
   def test_move_east
     position = Position.new(0, 0, 'EAST')

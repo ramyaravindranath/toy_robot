@@ -1,26 +1,26 @@
 require_relative './test_helper'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/robot'
 require './lib/table'
 require './lib/position'
 require './lib/command'
-
-
+# Test class for Command class functionalities
 class CommandTest < Minitest::Test
-
-  def test_is_valid_input
-    table=Table.new
-    input = "RIGHT"
+  def test_execute_place_command
+    table = Table.new
     command = Command.new(table)
-    assert_equal command.is_valid_input(input), true
+    input = 'PLACE 3,4,SOUTH'
+    position = command.execute(input)
+    assert_equal position.facing, 'SOUTH'
   end
 
-  def test_place_robot
-    table=Table.new
-    input="PLACE(3,4,'SOUTH)"
-    command=Command.new(table)
-    assert command.place_robot(input)
+  def test_execute_move_command
+    table = Table.new
+    command = Command.new(table)
+    input = 'PLACE 3,4,SOUTH'
+    input1 = 'MOVE'
+    command.execute(input)
+    position = command.execute(input1)
+    assert_equal position.y, 3
   end
-
 end

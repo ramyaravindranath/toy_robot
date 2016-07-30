@@ -1,8 +1,8 @@
 # This represents Table on which robot is placed
 class Table
-  attr_accessor:width
-  attr_accessor:height
-  attr_accessor:robot
+  attr_reader :width
+  attr_reader :height
+  attr_reader :robot
 
   def initialize
     @width = 5

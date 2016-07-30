@@ -1,19 +1,23 @@
 # This is Robot class
 class Robot
-  attr_accessor:position
-  attr_accessor:table
+  attr_reader :position
+  attr_reader :table
 
-  def initialize(position, table)
-    @position = position
+  def initialize(table)
     @table = table
+    @position = nil
+  end
+
+  def place(position)
+    @position = position if table.valid_position?(position)
   end
 
   def placed?
-    table.valid_position?(position)
+    !@position.nil?
   end
 
   def move
-    @position = position.get_new_position(position) if placed?
+    @position = position.get_new_position(@position) if placed?
   end
 
   def turn_left
@@ -25,6 +29,6 @@ class Robot
   end
 
   def report
-    position
+    puts "#{@position.x},#{@position.y},#{@position.facing}" if placed?
   end
 end

@@ -1,42 +1,32 @@
-require_relative './table'
-require_relative './position'
+require_relative './parser'
 require_relative './robot'
+require_relative './table'
 
-
+# A abstract class for parse user input and execute commands.
 class Command
-
-  attr_accessor:table
+  attr_reader :position
+  attr_reader :table
+  attr_reader :robot
 
   def initialize(table)
-     @table = table
-  end
-
-
-  def is_valid_input(input)
-    input.include?("PLACE") || input.include?("MOVE") || input.include?("RIGHT") || input.include?("LEFT") || input.include?("REPORT")
+    @table = table
+    @robot = Robot.new(table)
   end
 
   def execute(input)
-
-    if input.include?("PLACE")
-      place_robot(input.delete(' '))
-    elsif input.include?("MOVE")
-      move_robot(input.delete(' '))
-    elsif input.include?("RIGHT")
-      turn_robot_right(input.delete(' '))
-    elsif input.include?("LEFT")
-      turn_robot_left(input.delete(' '))
-    elsif input.include?("REPORT")
-      report_robot(input.delete(' '))
+    if input.start_with?('PLACE')
+      @position = Parser.parse(input)
+      robot.place(@position) unless @position.nil?
+    elsif input == 'MOVE'
+      robot.move
+    elsif input == 'LEFT'
+      @robot.turn_left
+    elsif input == 'RIGHT'
+      @robot.turn_right
+    elsif input == 'REPORT'
+      @robot.report
+    else
+      puts 'Invalid commad'
     end
-  end
-
-  def place_robot(input)
-   position_array= input.scan(/\(([^\)]+)\)/).first
-   position_x=position_array[0]
-   position_y=position_array[1]
-   position_facing=position_array[2]
-   position_obj=Position.new(position_x.to_i,position_y.to_i,position_facing)
-   table.valid_position?(position_obj)
   end
 end

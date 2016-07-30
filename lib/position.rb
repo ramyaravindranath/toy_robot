@@ -1,8 +1,8 @@
 # This class represents position of the robot
 class Position
-  attr_accessor:x
-  attr_accessor:y
-  attr_accessor:facing
+  attr_reader :x
+  attr_reader :y
+  attr_reader :facing
   DIRECTIONS = %w(NORTH EAST SOUTH WEST).freeze
 
   def initialize(x, y, facing)
@@ -12,7 +12,7 @@ class Position
   end
 
   def get_new_position(current_position)
-    case @facing
+    case current_position.facing
     when 'NORTH'
       move_north(current_position)
     when 'EAST'
