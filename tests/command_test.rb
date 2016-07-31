@@ -28,4 +28,28 @@ class CommandTest < Minitest::Test
     position = command.execute(input1)
     assert_equal position.y, 3
   end
+
+  def test_execute_left_command
+    table = Table.new
+    command = Command.new(table)
+    usr_input = 'PLACE 3,4,SOUTH'
+    usr_input1 = 'LEFT'
+    input = Input.new(usr_input)
+    input1 = Input.new(usr_input1)
+    command.execute(input)
+    position = command.execute(input1)
+    assert_equal position.facing, 'EAST'
+  end
+
+  def test_execute_left_command
+    table = Table.new
+    command = Command.new(table)
+    usr_input = 'PLACE 3,4,SOUTH'
+    usr_input1 = 'RIGHT'
+    input = Input.new(usr_input)
+    input1 = Input.new(usr_input1)
+    command.execute(input)
+    position = command.execute(input1)
+    assert_equal position.facing, 'WEST'
+  end
 end
