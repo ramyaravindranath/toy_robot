@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
 ruby '2.2.2'
-gem 'minitest-capybara'
+gem 'rake'
+gem 'minitest-autotest'
 gem 'simplecov', require: false, group: :test

@@ -16,15 +16,15 @@ class Command
   def execute(input)
     if input.start_with?('PLACE')
       @position = Parser.parse(input)
-      robot.place(@position) unless @position.nil?
+      robot.place(position) unless position.nil?
     elsif input == 'MOVE'
       robot.move
     elsif input == 'LEFT'
-      @robot.turn_left
+      robot.turn_left
     elsif input == 'RIGHT'
-      @robot.turn_right
+      robot.turn_right
     elsif input == 'REPORT'
-      @robot.report
+      robot.report
     else
       puts 'Invalid commad'
     end

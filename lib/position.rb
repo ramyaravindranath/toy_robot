@@ -26,7 +26,7 @@ class Position
 
   def move_east(current_position)
     if current_position.x.between?(0, 3)
-      Position.new(current_position.x + 1, @y, facing)
+      Position.new(current_position.x + 1, y, facing)
     else
       current_position
     end
@@ -34,7 +34,7 @@ class Position
 
   def move_west(current_position)
     if current_position.x.between?(1, 4)
-      Position.new(current_position.x - 1, @y, facing)
+      Position.new(current_position.x - 1, y, facing)
     else
       current_position
     end
@@ -42,7 +42,7 @@ class Position
 
   def move_north(current_position)
     if current_position.y.between?(0, 3)
-      Position.new(@x, current_position.y + 1, facing)
+      Position.new(x, current_position.y + 1, facing)
     else
       current_position
     end
@@ -50,7 +50,7 @@ class Position
 
   def move_south(current_position)
     if current_position.y.between?(1, 4)
-      Position.new(@x, current_position.y - 1, facing)
+      Position.new(x, current_position.y - 1, facing)
     else
       current_position
     end
@@ -58,11 +58,11 @@ class Position
 
   def turn_left
     new_direction = DIRECTIONS[(DIRECTIONS.index(facing) - 1) % 4]
-    Position.new(@x, @y, new_direction)
+    Position.new(x, y, new_direction)
   end
 
   def turn_right
     new_direction = DIRECTIONS[(DIRECTIONS.index(facing) + 1) % 4]
-    Position.new(@x, @y, new_direction)
+    Position.new(x, y, new_direction)
   end
 end

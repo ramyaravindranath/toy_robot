@@ -5,7 +5,6 @@ class Robot
 
   def initialize(table)
     @table = table
-    @position = nil
   end
 
   def place(position)
@@ -29,6 +28,6 @@ class Robot
   end
 
   def report
-    puts "#{@position.x},#{@position.y},#{@position.facing}" if placed?
+    puts "#{position.x},#{position.y},#{position.facing}" if placed?
   end
 end
