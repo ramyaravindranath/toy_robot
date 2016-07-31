@@ -10,7 +10,7 @@
 
 <h1> To run tests </h1>
 
-  - rake test
+  - bundle exec rake test
 
 
 <h1> Description </h1>
