@@ -41,7 +41,7 @@ class CommandTest < Minitest::Test
     assert_equal position.facing, 'EAST'
   end
 
-  def test_execute_left_command
+  def test_execute_right_command
     table = Table.new
     command = Command.new(table)
     usr_input = 'PLACE 3,4,SOUTH'
