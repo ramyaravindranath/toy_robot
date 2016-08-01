@@ -28,6 +28,10 @@ class Robot
   end
 
   def report
-    puts "#{position.x},#{position.y},#{position.facing}" if placed?
+    if placed?
+      puts "#{position.x},#{position.y},#{position.facing}"
+    else
+      puts 'Robot not placed! Please enter valid place command'
+    end
   end
 end
