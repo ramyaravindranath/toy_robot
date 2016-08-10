@@ -3,11 +3,15 @@ class Position
   attr_reader :x
   attr_reader :y
   attr_reader :facing
+  attr_reader :width
+  attr_reader :height
   DIRECTIONS = %w(NORTH EAST SOUTH WEST).freeze
 
   def initialize(x, y, facing)
     @x = x
     @y = y
+    @width = 5
+    @height = 5
     @facing = facing
   end
 
@@ -24,8 +28,16 @@ class Position
     end
   end
 
+  def is_x_on_table? (x)
+    x.between?(0, width - 1)
+  end
+
+  def is_y_on_table? (y)
+    y.between?(0, height - 1)
+  end
+
   def move_east(current_position)
-    if current_position.x.between?(0, 3)
+    if is_x_on_table?(current_position.x + 1)
       Position.new(current_position.x + 1, y, facing)
     else
       current_position
@@ -33,7 +45,7 @@ class Position
   end
 
   def move_west(current_position)
-    if current_position.x.between?(1, 4)
+    if is_x_on_table?(current_position.x-1)
       Position.new(current_position.x - 1, y, facing)
     else
       current_position
@@ -41,7 +53,7 @@ class Position
   end
 
   def move_north(current_position)
-    if current_position.y.between?(0, 3)
+    if is_y_on_table?(current_position.y + 1)
       Position.new(x, current_position.y + 1, facing)
     else
       current_position
@@ -49,7 +61,7 @@ class Position
   end
 
   def move_south(current_position)
-    if current_position.y.between?(1, 4)
+    if is_y_on_table?(current_position.y - 1)
       Position.new(x, current_position.y - 1, facing)
     else
       current_position
