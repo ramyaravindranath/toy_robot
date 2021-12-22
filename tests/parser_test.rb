@@ -10,6 +10,6 @@ class ParserTest < Minitest::Test
     position = Parser.parse(input)
     assert_equal position.x, 3
     assert_equal position.y, 4
-    assert_equal position.facing, 'WEST'
+    assert_equal position.facing, 'NORTH'
   end
 end
